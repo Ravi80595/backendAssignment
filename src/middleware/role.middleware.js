@@ -1,1 +1,6 @@
-re
+module.exports = (...allowedRoles) => (req, res, next) => {
+  if (!allowedRoles.includes(req.user.role)) {
+    return res.sendStatus(403);
+  }
+  next();
+};
